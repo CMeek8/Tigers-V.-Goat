@@ -18,33 +18,34 @@ class MyGame:
     def __init__(self, width, height, title):
         arcade.open_window(width,height,title)
         arcade.set_background_color(arcade.color.BLACK)
-               
+         
+
     def setup(self):
         #Setup of all positions on board
         self.p = []
-        self.p.append(Position(150,60,'none'))
-        self.p.append(Position(400,60,'none'))
-        self.p.append(Position(700,60,'none'))
-        self.p.append(Position(950,60,'none'))
-        self.p.append(Position(60,260,'none'))
-        self.p.append(Position(250,260,'none'))
-        self.p.append(Position(450,260,'none'))
-        self.p.append(Position(650,260,'none'))
-        self.p.append(Position(850,260,'none'))
-        self.p.append(Position(1060,260,'none'))
-        self.p.append(Position(60,460,'none'))
-        self.p.append(Position(380,460,'none'))
-        self.p.append(Position(500,460,'none'))
-        self.p.append(Position(650,460,'none'))
-        self.p.append(Position(750,460,'none'))
-        self.p.append(Position(1060,460,'none'))
-        self.p.append(Position(60,660,'none'))
-        self.p.append(Position(480,660,'none'))
-        self.p.append(Position(550,660,'tiger'))
-        self.p.append(Position(600,660,'tiger'))
-        self.p.append(Position(680,660,'none'))
-        self.p.append(Position(1060,660,'none'))
-        self.p.append(Position(600,800,'tiger'))
+        self.p.append(Position(150,60,'none', [4,2],[ (3,2),(4,3)]))
+        self.p.append(Position(400,60,'none', [4,3],[(4,2), (4,4),(3,3)]))
+        self.p.append(Position(700,60,'none', [4,4],[(4,3),(4,5),(3,4)]))
+        self.p.append(Position(950,60,'none', [4,5],[(4,4),(3,5)]))
+        self.p.append(Position(60,260,'none', [3,1],[(2,1),(3,2)]))
+        self.p.append(Position(250,260,'none', [3,2],[(3,1),(3,3),(2,2),(4,2)]))
+        self.p.append(Position(450,260,'none', [3,3],[(3,2),(2,3),(3,4),(4,3)]))
+        self.p.append(Position(650,260,'none', [3,4],[(3,3),(2,4),(3,5),(4,4)]))
+        self.p.append(Position(850,260,'none', [3,5],[(3,4),(2,5),(3,6),(4,5)]))
+        self.p.append(Position(1060,260,'none', [3,6],[(3,5),(2,6)]))
+        self.p.append(Position(60,460,'none', [2,1],[(1,1),(3,1),(2,2)]))
+        self.p.append(Position(380,460,'none', [2,2],[(2,1),(1,2),(2,3),(3,2)]))
+        self.p.append(Position(500,460,'none', [2,3],[(2,2),(1,3),(2,4),(3,3)]))
+        self.p.append(Position(650,460,'none', [2,4],[(2,3),(1,4),(2,5),(3,4)]))
+        self.p.append(Position(750,460,'none', [2,5],[(2,4),(1,5),(2,6),(3,5)]))
+        self.p.append(Position(1060,460,'none', [2,6],[(2,5),(1,6),(3,6)]))
+        self.p.append(Position(60,660,'none', [1,1],[(2,1),(1,2)]))
+        self.p.append(Position(480,660,'none', [1,2],[(1,1),(0,0),(1,3),(2,2)]))
+        self.p.append(Position(550,660,'tiger', [1,3],[(1,2),(0,0),(1,4),(2,3)]))
+        self.p.append(Position(600,660,'tiger', [1,4],[(1,3),(0,0),(1,5),(2,4)]))
+        self.p.append(Position(680,660,'none', [1,5],[(1,4),(0,0),(1,6),(2,5)]))
+        self.p.append(Position(1060,660,'none', [1,6],[(1,5),(2,6)]))
+        self.p.append(Position(600,800,'tiger',[0,0],[(1,2),(1,3),(1,4),(1,5)]))
 
         self.gameState = 'ongoing'
 
@@ -223,10 +224,12 @@ def drawBackground():
 
 class Position:
 
-    def __init__(self,coordx,coordy,state):
+    def __init__(self,coordx,coordy,state, rowcol, neighbor):
         self.coordx = coordx
         self.coordy = coordy
         self.state = state
+        self.rowcol = rowcol
+        self.neighbor = neighbor
     
 #Main function to run upon startup    
 def main():
